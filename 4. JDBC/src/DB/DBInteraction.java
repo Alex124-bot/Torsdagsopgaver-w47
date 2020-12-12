@@ -9,13 +9,14 @@ public class DBInteraction implements DBInterface {
 
     @Override
     public int allCountCity() {
+
         final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
 
         try{
             Class.forName(JDBC_DRIVER);
             Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/world?serverTimezone=UTC","root","alex");
             PreparedStatement pstmt = null;
-            String sql = "SELECT * FROM world.city;";
+            String sql = "SELECT * FROM world.city";
             pstmt = con.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
